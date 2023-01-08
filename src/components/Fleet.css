@@ -1,0 +1,20 @@
+.list-fleet {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-top: 50px;
+}
+
+.item-fleet {
+    margin-left: 2.4%;
+    list-style: none;
+    border-radius: 20px;
+    background-color: #2DA8D8FF;
+    background-color: #37383B;
+    width: 22%;
+    min-width: 330px;
+    height: 400px;
+    padding: 20px;
+    margin-bottom: 40px;
+    box-shadow: 3px 3px 10px black;
+}

@@ -1,0 +1,38 @@
+.account-container {
+    display: block;
+    width: 30%;
+    min-width: 600px;
+    margin: 40px auto;
+    padding: 26px;
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px black;
+    background-color: #37383B;
+}
+
+.account-container h3 {
+    display: block;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+    color: #D9514EFF;
+}
+
+.account-ul {
+    list-style: none;
+}
+
+.account-ul li {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12px;
+}
+
+.account-li-item-title {
+    display: block;
+    font-size: 13px;
+    color: #D9514EFF;
+}
+
+.account-ul li span:nth-last-child(1) {
+    color: #fff;
+}

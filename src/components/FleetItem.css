@@ -1,0 +1,45 @@
+.item-fleet-image {
+    display: flex;
+    justify-content: center;
+}
+.item-fleet-image img{
+    width: 100%;
+    border-radius: 10px;
+    height: 200px;
+}
+
+div .item-fleet-car-info {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.list-car-info {
+    list-style: none;
+    color: #D9514EFF;
+}
+
+.list-car-info li h3 {
+    text-align: center;
+    border-bottom: solid;
+}
+
+.btn-rent-car {
+    transition: .3s;
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 6px 12px 6px 12px;
+    font-size: 16px;
+
+    background-color: #D9514EFF;
+
+    border: solid 2px #D9514EFF;
+    color: #37383B;
+
+}
+
+.btn-rent-car:hover {
+    background-color: transparent;
+    color: #D9514EFF;
+}

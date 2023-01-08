@@ -1,0 +1,88 @@
+
+body {
+    height: 100%;
+    overflow: hidden;
+    background-color: #2A2B2DFF;
+    padding-top: 25px;
+    padding-bottom: 20px;
+}
+.pageContent {
+    max-height: calc(100vh - 92px);
+    overflow-y: auto;
+    margin-bottom: 40px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #37383B;
+    border-radius: 10px;
+}
+
+div.register-container {
+    width: 500px;
+    margin-top: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 3px 3px 10px black;
+    background-color: #37383B;
+}
+
+div.register-container h1 {
+    display: block;
+    text-align: center;
+    color: #D9514EFF;
+}
+
+form.register-form {
+    margin-top: 40px;
+}
+
+form.register-form input {
+    display: block;
+    width: 70%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    font-size: 16px;
+    border: solid 2px #D9514EFF;
+    border-radius: 20px;
+    background-color: lightgray;
+}
+
+form.register-form input:focus {
+    outline: none;
+}
+
+.register-form input:nth-of-type(11) {
+    background-color: transparent;
+    color: #D9514EFF;
+    transition: .3s;
+}
+
+.register-form input:nth-of-type(11):hover {
+    background-color: #D9514EFF;
+    color: #37383B;
+}
+
+.btn-open-login-form {
+    display: block;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    background-color: transparent;
+    color: lightgray;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+}
+
+.btn-open-login-form:hover {
+    cursor: pointer;
+    color: #2DA8D8FF;
+}
