@@ -1,10 +1,36 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './Account.css'
+import { motion } from 'framer-motion'
+import loginForm from "./LoginForm";
 
-class Account extends React.Component {
-  render() {
+function Account(props) {
+
+  const [userData, setUserData] = useState({});
+
+  async function getElementsInfo() {
+    const clientID = window.sessionStorage.getItem('clientID');
+    const result = await window.db.getClientInfo(clientID);
+
+    let dt = result.dateOfJoining;
+    dt = dt.getDate() + '.' + (dt.getMonth() + 1) + '.' + dt.getFullYear();
+    result.dateOfJoining = dt;
+
+    setUserData(result);
+  }
+
+  useEffect(() => {
+    getElementsInfo()
+      .catch(err => console.log(err));
+  }, []);
+
+
     return (
-      <div className="account-container">
+      <motion.div className="account-container"
+                  initial={{opacity: 0}}
+                  animate={{opacity: 1}}
+                  exit={{opacity: 0}}
+                  transition={{duration: 0.5}}
+      >
         <h3>Twoje Konto</h3>
       <ul className="account-ul">
         <li>
@@ -12,7 +38,7 @@ class Account extends React.Component {
           Numer Dowodu Osobistego
           </span>
           <span className="account-ClientID">
-            AXAX
+            {userData.clientID}
           </span>
         </li>
         <li>
@@ -20,7 +46,7 @@ class Account extends React.Component {
           Imię
           </span>
           <span className="account-FirstName">
-            Patryk
+            {userData.firstName}
           </span>
         </li>
         <li>
@@ -28,7 +54,7 @@ class Account extends React.Component {
           Nazwisko
           </span>
           <span className="account-Surname">
-            Monte-Negro
+            {userData.surname}
           </span>
         </li>
         <li>
@@ -36,7 +62,7 @@ class Account extends React.Component {
           Numer Prawa Jazdy
           </span>
           <span className="account-DriverLicenseNumber">
-            DADADADA
+            {userData.driverLicenseNumber}
           </span>
         </li>
         <li>
@@ -44,7 +70,7 @@ class Account extends React.Component {
           Data dołączenia
           </span>
           <span className="account-DateOfJoining">
-            08.01.2023
+            {userData.dateOfJoining}
           </span>
         </li>
         <li>
@@ -52,7 +78,7 @@ class Account extends React.Component {
           Kraj
           </span>
           <span className="account-Country">
-            Polska
+            {userData.country}
           </span>
         </li>
         <li>
@@ -60,7 +86,7 @@ class Account extends React.Component {
           Miejscowość
           </span>
           <span className="account-City">
-            Wrocław
+            {userData.city}
           </span>
         </li>
         <li>
@@ -68,7 +94,7 @@ class Account extends React.Component {
           Ulica i Numer Domu
           </span>
           <span className="account-StreetAndHouseNumber">
-            Ruska 69
+            {userData.streetAndHouseNumber}
           </span>
         </li>
         <li>
@@ -76,7 +102,7 @@ class Account extends React.Component {
           Numer Telefonu
           </span>
           <span className="account-Phone">
-            502-502-502
+            {userData.phone}
           </span>
         </li>
         <li>
@@ -84,13 +110,12 @@ class Account extends React.Component {
           E-mail
           </span>
           <span className="account-Email">
-            coco@chanel.pl
+            {userData.email}
           </span>
         </li>
       </ul>
-      </div>
+      </motion.div>
     );
-  }
 }
 
 export default Account

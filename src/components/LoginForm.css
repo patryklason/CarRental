@@ -124,3 +124,9 @@ form.login-form input:nth-of-type(3):hover {
     cursor: pointer;
     color: #2DA8D8FF;
 }
+
+.error {
+    margin-top: 10px;
+    text-align: center;
+    color: darkred;
+}
