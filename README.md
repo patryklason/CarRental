@@ -1,10 +1,8 @@
 # Running the React + Electron project
 
-1)
-  ### `npm start`
+1) ### `npm start`
 
-2)
-  ### `npm run electron-dev`
+2) ### `npm run electron-dev`
 
 # Getting Started with Create React App
 
