@@ -9,7 +9,7 @@ body {
 .pageContent {
     max-height: calc(100vh - 92px);
     overflow-y: auto;
-    margin-bottom: 40px;
+    margin-bottom: 80px;
 }
 
 ::-webkit-scrollbar {
@@ -25,6 +25,7 @@ div.register-container {
     margin-top: 5vh;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 40px;
     padding: 30px;
     border-radius: 25px;
     box-shadow: 3px 3px 10px black;
@@ -41,10 +42,17 @@ form.register-form {
     margin-top: 40px;
 }
 
+form.register-form label {
+    display: block;
+    margin-top: 15px;
+    margin-left: 19%;
+    font-size: 13px;
+    color: #D9514EFF;
+}
+
 form.register-form input {
     display: block;
     width: 70%;
-    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
@@ -58,7 +66,76 @@ form.register-form input:focus {
     outline: none;
 }
 
+.phoneInputContainer {
+    display: block;
+    width: 70%;
+}
+
+.phoneInput {
+    display: none;
+
+    font-size: 30px;
+}
+
+
+div.phoneInputContainer.react-tel-input {
+    display: block;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    border: solid 2px #D9514EFF;
+    border-radius: 20px;
+    background-color: lightgray;
+}
+
+.react-tel-input div.flag-dropdown {
+    display: block;
+    width: 10%;
+    margin-left: 0;
+    background-color: transparent;
+    border-radius: 30px 0 0 30px;
+    border: none;
+}
+
+.react-tel-input div.open {
+    background-color: transparent;
+    border-radius: 30px 0 0 30px;
+    outline: none;
+    border: none;
+}
+
+.react-tel-input .flag-dropdown.open .selected-flag {
+    background-color: transparent;
+    border-radius: 30px 0 0 30px;
+    outline: none;
+    border: none;
+}
+
+div.react-tel-input div.selected-flag:hover, div.react-tel-input div.selected-flag:focus {
+    background-color: transparent;
+}
+
+div.flag-dropdown.open {
+    background-color: transparent;
+}
+
+div.selected-flag {
+    width: 10%;
+    border-radius: 30px;
+    background-color: transparent;
+}
+
+input.form-control.phoneInput {
+    display: block;
+    width: 90%;
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+}
+
 .register-form input:nth-of-type(11) {
+    margin-top: 30px;
     background-color: transparent;
     color: #D9514EFF;
     transition: .3s;

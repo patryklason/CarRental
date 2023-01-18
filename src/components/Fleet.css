@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     padding-top: 50px;
+    /*gap: 2%;*/
 }
 
 .item-fleet {
@@ -12,9 +13,34 @@
     background-color: #2DA8D8FF;
     background-color: #37383B;
     width: 22%;
-    min-width: 330px;
-    height: 400px;
+    min-width: 300px;
+    height: auto;
     padding: 20px;
     margin-bottom: 40px;
     box-shadow: 3px 3px 10px black;
+}
+
+@media (max-width: 1340px) {
+    .item-fleet {
+        width: 28%;
+        margin-left: 4%;
+    }
+}
+
+@media (max-width: 1070px) {
+    .item-fleet {
+        width: 43%;
+        margin-left: 4.66%;
+    }
+}
+
+@media (max-width: 680px) {
+    .item-fleet {
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    .item-fleet img {
+        height: 300px;
+    }
 }
