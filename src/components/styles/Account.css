@@ -6,7 +6,7 @@
     padding: 26px;
     border-radius: 20px;
     box-shadow: 3px 3px 10px black;
-    background-color: #37383B;
+    background-color: var(--bg2Color);
 }
 
 .account-container h3 {
@@ -14,7 +14,7 @@
     margin-bottom: 20px;
     text-align: center;
     font-size: 24px;
-    color: #D9514EFF;
+    color: var(--mainColor);
 }
 
 .account-ul {
@@ -30,7 +30,7 @@
 .account-li-item-title {
     display: block;
     font-size: 13px;
-    color: #D9514EFF;
+    color: var(--mainColor);
 }
 
 .account-ul li span:nth-last-child(1) {

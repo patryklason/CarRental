@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import './LoginForm.css'
+import './styles/LoginForm.css'
 import { Link, useHistory} from 'react-router-dom'
 
 //const [isSubmitted, setIsSubmitted] = useState(false);
@@ -72,7 +72,7 @@ function LoginForm(props) {
     }
 
     const dbResult = await window.db.validateLogin(form);
-    console.log(dbResult);
+
 
     if (typeof dbResult.email === 'undefined') {
       setErrorMessages({name: "uname", message: errors.uname});
@@ -87,19 +87,6 @@ function LoginForm(props) {
         history.push('/fleet');
       }
     }
-    /*const foundData = users.find((user) => user.email === form.email)
-
-    if(foundData) {
-      if(foundData.password !== form.password) {
-        setErrorMessages({name: "pass", message: errors.pass});
-      }
-      else {
-        history.push("/fleet");
-      }
-    }
-    else {
-      setErrorMessages({ name: "uname", message: errors.uname });
-    }*/
   }
 
   const renderErrorMessage = (name) =>

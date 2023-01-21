@@ -20,7 +20,7 @@ div .item-fleet-car-info {
 
 .list-car-info {
     list-style: none;
-    color: #D9514EFF;
+    color: var(--mainColor);
 }
 
 .list-car-info li h3 {
@@ -46,10 +46,10 @@ div .item-fleet-car-info {
     /*font-weight: bold;*/
     text-transform: uppercase;
 
-    background-color: #D9514EFF;
+    background-color: var(--mainColor);
 
-    border: solid 2px #D9514EFF;
-    color: #37383B;
+    border: solid 2px var(--mainColor);
+    color: var(--bg2Color);
 
     border-radius: 20px;
 
@@ -57,5 +57,6 @@ div .item-fleet-car-info {
 
 .btn-rent-car:hover {
     background-color: transparent;
-    color: #D9514EFF;
+    color: var(--mainColor);
+    cursor: pointer;
 }

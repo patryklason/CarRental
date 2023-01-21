@@ -9,10 +9,17 @@ html {
     width: 100vw;
 }
 
+:root {
+    --mainColor: #D9514EFF;
+    --helpColor: #2DA8D8FF;
+    --bgColor: #2A2B2DFF;
+    --bg2Color: #37383B;
+}
+
 body {
     height: 100%;
     overflow: hidden;
-    background-color: #2A2B2DFF;
+    background-color: var(--bgColor);
     padding-top: 25px;
 }
 

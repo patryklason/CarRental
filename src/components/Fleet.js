@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from 'framer-motion'
 import FleetItem from './FleetItem'
-import './Fleet.css'
+import './styles/Fleet.css'
 
 function Fleet(){
 
@@ -17,10 +17,7 @@ function Fleet(){
 
   async function getFleet() {
     const result = await window.db.getFleet();
-    console.log(result);
     setFleetItems(result);
-
-
   }
 
   listItems = (fleetItems.map((item) =>
@@ -29,7 +26,6 @@ function Fleet(){
     </li>
   ));
 
-  console.log(listItems);
 
 
     return (

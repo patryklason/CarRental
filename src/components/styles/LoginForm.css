@@ -16,11 +16,11 @@ body {
 nav {
     padding-left: 5%;
     padding-right: 5%;
-    padding-bottom: 25px;
+    padding-bottom: 15px;
     background-color: transparent;
     border-bottom: solid;
     border-width: 5px;
-    border-color: #D9514EFF;
+    border-color: var(--mainColor);
 }
 
 nav ul {
@@ -32,7 +32,7 @@ nav ul {
 nav ul li {
     display: block;
     font-size: 24px;
-    color: #D9514EFF;
+    color: var(--mainColor);
     font-weight: lighter;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -51,13 +51,13 @@ div.login-container {
     padding: 30px;
     border-radius: 25px;
     box-shadow: 3px 3px 10px black;
-    background-color: #37383B;
+    background-color: var(--bg2Color);
 }
 
 div.login-container h1 {
     display: block;
     text-align: center;
-    color: #D9514EFF;
+    color: var(--mainColor);
 }
 
 div.login-image-container {
@@ -72,7 +72,7 @@ div.login-image-container i {
     margin-left: auto;
     margin-right: auto;
     font-size: 120px;
-    color: #D9514EFF;
+    color: var(--mainColor);
 }
 
 form.login-form {
@@ -87,7 +87,7 @@ form.login-form input {
     margin-right: auto;
     padding: 10px;
     font-size: 16px;
-    border: solid 2px #D9514EFF;
+    border: solid 2px var(--mainColor);
     border-radius: 20px;
     background-color: lightgray;
 }
@@ -98,12 +98,12 @@ form.login-form input:focus {
 
 form.login-form input:nth-of-type(3) {
     background-color: transparent;
-    color: #D9514EFF;
+    color: var(--mainColor);
     transition: .3s;
 }
 
 form.login-form input:nth-of-type(3):hover {
-    background-color: #D9514EFF;
+    background-color: var(--mainColor);
     color: #37383B;
 }
 
@@ -122,11 +122,11 @@ form.login-form input:nth-of-type(3):hover {
 
 .btn-open-create-account-form:hover {
     cursor: pointer;
-    color: #2DA8D8FF;
+    color: var(--helpColor);
 }
 
 .error {
     margin-top: 10px;
     text-align: center;
-    color: darkred;
+    color: var(--mainColor);
 }

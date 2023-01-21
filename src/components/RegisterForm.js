@@ -1,14 +1,15 @@
 import React, {useState} from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import Alert from "@mui/material/Alert";
 import PhoneInput from 'react-phone-input-2'
 import pl from 'react-phone-input-2/lang/pl.json'
 import 'react-phone-input-2/lib/style.css'
-import './RegisterForm.css'
+import './styles/RegisterForm.css'
 
 function RegisterForm() {
 
-  const [form, setForm] = useState({
+  const initialForm = {
     clientID: '',
     firstName: '',
     surname: '',
@@ -21,9 +22,13 @@ function RegisterForm() {
     email: '',
     password: '',
     passwordConfirm: '',
-  });
+  }
+
+  const [form, setForm] = useState(initialForm);
 
   const [errorMessages, setErrorMessages] = useState({});
+  const [showError, setShowError] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   const errors = {
     phone: "Podany numer telefonu jest nieprawidłowy",
@@ -39,7 +44,7 @@ function RegisterForm() {
 
   const handleNameChange = (event) => {
     const nextState = form;
-    nextState.name = event.target.value;
+    nextState.firstName = event.target.value;
     setForm(nextState);
   };
 
@@ -116,9 +121,18 @@ function RegisterForm() {
       return;
     }
 
+    const accountExists = await window.db.checkAccountExists(form);
+
+    if(accountExists) {
+      setShowError(true);
+      return;
+    }
+
+    setShowError(false);
     const dbResult = await window.db.createAccount(form);
 
-    console.log(dbResult);
+    setForm(initialForm);
+    setShowAlert(true);
 
   }
 
@@ -151,17 +165,17 @@ function RegisterForm() {
             <label>Numer Dowodu Osobistego</label>
             <input type="text" name="register-client-id" placeholder="AXX3289182" required onChange={handleClientIDChange}/>
             <label>Imię</label>
-            <input type="text" name="register-firstname" placeholder="Jan" pattern="[a-zA-Z0-9-]+" required onChange={handleNameChange}/>
+            <input type="text" name="register-firstname" placeholder="Jan" pattern="[a-zA-Z0-9ąęźżśóćńł-]+" required onChange={handleNameChange}/>
             <label>Nazwisko</label>
-            <input type="text" name="register-surname" placeholder="Kowalski" pattern="[a-zA-Z0-9-]+" required onChange={handleSurnameChange}/>
+            <input type="text" name="register-surname" placeholder="Kowalski" pattern="[a-zA-Z0-9ąęźżśóćńł-]+" required onChange={handleSurnameChange}/>
             <label>Numer Prawa Jazdy</label>
             <input type="text" name="register-driver-license" placeholder="B119AA213" required onChange={handleDriverLicenseChange}/>
             <label>Kraj</label>
-            <input type="text" name="register-country" placeholder="Kraj" pattern="[a-zA-Z-]+" required onChange={handleCountryChange}/>
+            <input type="text" name="register-country" placeholder="Kraj" pattern="[a-zA-Ząęźżśóćńł-]+" required onChange={handleCountryChange}/>
             <label>Miejscowość</label>
-            <input type="text" name="register-city" placeholder="Wrocław" pattern="[a-zA-Z-]+" required onChange={handleCityChange}/>
+            <input type="text" name="register-city" placeholder="Wrocław" pattern="[a-zA-Ząęźżśóćńł-]+" required onChange={handleCityChange}/>
             <label>Ulica i Numer Domu</label>
-            <input type="text" name="register-street" placeholder="ul. Wybrzeże Wyspiańskiego 22/10" pattern="[a-zA-Z0-9-]+" required onChange={handleStreetChange}/>
+            <input type="text" name="register-street" placeholder="ul. Wybrzeże Wyspiańskiego 22/10" required onChange={handleStreetChange}/>
             <label>Numer Telefonu</label>
             <PhoneInput placeholder="Numer Telefonu" regions={'europe'} country={'pl'} localization={pl} countryCodeEditable={false}
             containerClass="phoneInputContainer" inputClass="phoneInput" buttonStyle={{backgroundColor: "transparent"}} onChange={handlePhoneChange}
@@ -177,6 +191,14 @@ function RegisterForm() {
             {renderErrorMessage("passMatch")}
             <input type="submit" name="btn-register-confirm" value="Zarejestruj się"/>
           </form>
+
+          {showError && (
+            <Alert className="popup-alert" severity="error" onClose={() => {setShowError(false)}}><strong>Wystąpił Błąd!</strong> - Podany e-mail / numer telefonu / dowodu osobistego / prawa jazdy istniej(e/ą) w systemie!</Alert>
+          )}
+
+          {showAlert && (
+            <Alert className="popup-alert" severity="success" onClose={() => {setShowAlert(false)}}><strong>Konto zostało utworzone!</strong> - twoje dane zostaną zweryfikowane, możesz przejść do logowania.</Alert>
+          )}
 
           <Link to="/" className="btn-open-login-form">Masz już konto? Zaloguj się!</Link>
         </motion.div>

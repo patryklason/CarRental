@@ -1,0 +1,152 @@
+.car-container {
+    width: 80%;
+    margin: 30px auto 30px auto;
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px black;
+    padding: 30px;
+    background-color: #37383B;
+}
+
+.car-container button {
+    display: block;
+    border: none;
+    background-color: transparent;
+    color: var(--mainColor);
+    text-decoration: none;
+    font-size: 18px;
+    transition: .3s;
+}
+
+.car-container button:hover {
+    color: #fff;
+    cursor: pointer;
+}
+
+.car-content-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.left {
+    min-width: 400px;
+    width: 58%;
+    padding: 10px;
+}
+
+.right {
+    margin-left: 2%;
+    width: 40%;
+    min-width: 300px;
+    padding: 10px;
+}
+
+.right h4 {
+    color: var(--mainColor);
+    margin-bottom: 10px;
+    padding-bottom: 2px;
+    font-size: 18px;
+    border-bottom: solid 3px var(--mainColor);
+}
+
+.image-container {
+    min-width: 300px;
+    width: 100%;
+}
+
+.image-container img{
+    width: 100%;
+    border-radius: 20px;
+}
+
+.car-info {
+    min-width: 300px;
+    width: 100%;
+}
+
+.car-ul li h3 {
+    font-size: 22px;
+}
+
+.car-ul li {
+    font-size: 18px;
+}
+
+.calendar-div {
+    display: flex;
+    justify-content: center;
+}
+
+.calendar {
+    border-radius: 10px;
+    font-size: 10px;
+    width: 100%;
+}
+
+.rdrDateRangeWrapper {
+    border-radius: 10px;
+    width: 100%;
+}
+
+.rdrCalendarWrapper {
+    width: 100%;
+    border-radius: 10px;
+    /*background-color: lightgray;*/
+}
+
+.rdrDateDisplayWrapper {
+    width: 100%;
+    border-radius: 10px;
+}
+
+div.rdrMonth {
+    width: 100%;
+}
+
+.rdrDayNumber span{
+    font-size: 12px;
+}
+
+.rent-car span {
+    display: block;
+    color: var(--mainColor);
+}
+
+.calendar-tip {
+    border-top: solid 3px var(--mainColor);
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.total-price {
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+button.reserve-car-btn {
+    margin: 10px auto;
+    padding: 5px 10px;
+    border: solid 2px var(--mainColor);
+    border-radius: 20px;
+    background-color: var(--mainColor);
+    color: var(--bg2Color);
+    text-transform: uppercase;
+}
+
+button.reserve-car-btn:hover {
+    color: var(--mainColor);
+    background-color: var(--bg2Color);
+}
+
+button.reserve-car-btn:disabled {
+    border-color: gray;
+    background-color: gray;
+    color: var(--bgColor);
+    cursor: default;
+}
+
+.popup-alert {
+    z-index: 1000;
+    filter: blur(0px);
+}

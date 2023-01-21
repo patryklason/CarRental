@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import './NavButton.css'
 import { Link } from 'react-router-dom'
 
 class NavButton extends React.Component {

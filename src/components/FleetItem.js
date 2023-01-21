@@ -1,13 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion'
-import './FleetItem.css'
+import './styles/FleetItem.css'
+import { useHistory } from 'react-router-dom'
 
 function FleetItem({carID, brand, model, engineSize, horsepower, fuelType, transmission, yearOfProduction, color, dailyRentPrice}) {
 
-  if (carID > 13)
-    carID = 13;
+  let history = useHistory();
 
-  //carID = 5;
+
+  /*if (carID > 25)
+    carID = 19;*/
+
 
   if (fuelType === 'PB')
     fuelType = 'Benzyna';
@@ -20,6 +23,24 @@ function FleetItem({carID, brand, model, engineSize, horsepower, fuelType, trans
     transmission = 'Automatyczna';
   else if (transmission === 'Manual')
     transmission = 'Manualna';
+
+  const car = {
+    carID: carID,
+    brand: brand,
+    model: model,
+    engineSize: engineSize,
+    horsepower: horsepower,
+    fuelType: fuelType,
+    transmission: transmission,
+    yearOfProduction: yearOfProduction,
+    color: color,
+    dailyRentPrice: dailyRentPrice,
+  }
+
+  function handleChooseCarButton() {
+    global.car = car;
+    history.push('/rent-car');
+  }
 
     return (
       <motion.div className="fleet-item-div"
@@ -51,7 +72,7 @@ function FleetItem({carID, brand, model, engineSize, horsepower, fuelType, trans
             <li>
               <h4>{dailyRentPrice}€ / dzień</h4>
             </li>
-            <button className="btn-rent-car">Wybierz</button>
+            <button className="btn-rent-car" onClick={handleChooseCarButton}>Wybierz</button>
           </ul>
         </div>
       </motion.div>

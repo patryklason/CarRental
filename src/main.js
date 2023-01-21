@@ -8,6 +8,7 @@ function createWindow () {
     width: 800,
     height: 600,
     minWidth: 800,
+    autoHideMenuBar: true,
     webPreferences: {
       nodeIntegration: false,
       preload: path.join(__dirname, '/preload.js'),
@@ -90,6 +91,27 @@ ipcMain.handle('get-fleet', (event, args) => {
 ipcMain.handle('create-account', (event, args) => {
   return createAccount(args);
 });
+
+ipcMain.handle('check-account-exists', (event, args) => {
+  return checkAccountExists(args);
+});
+
+ipcMain.handle('check-car-availability', (event, args) => {
+  return checkCarAvailability(args);
+});
+
+ipcMain.handle('rent-car', (event, args) => {
+  return rentCar(args);
+});
+
+ipcMain.handle('get-rents', (event, args) => {
+  return getRents(args);
+});
+
+ipcMain.handle('cancel-rent', (event, args) => {
+  return cancelRent(args);
+});
+
 
 
 /**
@@ -179,7 +201,7 @@ async function getFleet(args) {
     })
     .catch(err => {
       throw err;
-    })
+    });
 }
 
 async function createAccount(userData) {
@@ -196,11 +218,17 @@ async function createAccount(userData) {
 
   const sql3 = sql0 + ` ` + sql1 + ` ` + sql2;
 
-  return db.promise().query(sql3)
+  return db.promise().query(sql1)
     .then(([result]) => {
+
       db.promise().query(`COMMIT;`)
-        .then()
-        .catch()
+        .then((result) => {
+          return result;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
       console.log(result);
       return result;
     })
@@ -210,6 +238,117 @@ async function createAccount(userData) {
       //throw err;
     });
 }
+
+async function checkAccountExists(args) {
+  const userData = args;
+
+  const sql = `SELECT clientID, driverLicenseNumber, email, phone FROM Customer 
+            WHERE clientID = '${userData.clientID}' OR driverLicenseNumber = '${userData.driverLicenseNumber}' 
+            OR email = '${userData.email}' OR phone = '${userData.phone}';`
+
+  return db.promise().query(sql)
+    .then(([result]) => {
+
+      // false if < 1 | true if >= 1
+      return result.length >= 1;
+
+    })
+    .catch(err => {
+      throw err;
+    });
+}
+
+async function checkCarAvailability(args) {
+  const carID = args;
+
+  const sql = `SELECT rh.validFrom, rh.validTo FROM rentalheader as rh
+JOIN
+rentalItem ri
+ON
+rh.RentalID = ri.rentalHeaderRentalId
+WHERE ri.carCarId = ${carID} AND rh.validTo > curdate();`
+
+  return db.promise().query(sql)
+    .then(([result]) => {
+
+      return result;
+
+    })
+    .catch(err => {
+      throw err;
+    });
+}
+
+async function rentCar(args) {
+  let validFrom = args.validFrom;
+  let validTo = args.validTo;
+
+  validFrom = validFrom.getFullYear() + '-' + (validFrom.getMonth() + 1) + '-' + validFrom.getDate();
+  validTo = validTo.getFullYear() + '-' + (validTo.getMonth() + 1) + '-' + validTo.getDate();
+
+  const sql = `INSERT INTO \`BD2-car_rental\`.\`RentalHeader\` (\`CustomerClientID\`, \`ValidFrom\`, \`ValidTo\`) VALUES ('${args.clientID}', '${validFrom}', '${validTo}');`
+  const sql2 = `INSERT INTO \`BD2-car_rental\`.\`RentalItem\` (\`RentalHeaderRentalID\`, \`CarCarID\`) VALUES (last_insert_id(), '${args.carID}');`
+
+  return db.promise().query(sql)
+    .then(([result]) => {
+      db.promise().query(sql2)
+        .then(([result]) => {
+          db.promise().query('COMMIT;')
+            .then(([result]) => result)
+            .catch(err => {throw err});
+          return result;
+        })
+        .catch(err => {throw err});
+      return result;
+    })
+    .catch(err => {
+      throw err;
+    });
+}
+
+async function getRents(args) {
+
+  const sql = `SELECT rh.rentalID, rh.validFrom, rh.validTo, DATEDIFF(rh.validTo, rh.validFrom) + 1 as dateDiff, rh.startedBy, rh.endedBy, car.dailyRentPrice, car.yearOfProduction, cm.brand, cm.model, cm.fuelType, cm.transmission, cm.engineSize, cm.horsepower, ri.itemID FROM RentalHeader rh
+JOIN RentalItem ri ON rh.rentalID = ri.rentalHeaderRentalID
+JOIN car ON ri.carCarID = car.CarID
+JOIN carmodel cm ON car.CarModelCarModelID = cm.CarModelID
+WHERE 
+rh.customerClientID = '${args.clientID}'
+ORDER BY rh.validTo DESC;`;
+
+
+  return db.promise().query(sql)
+    .then(([result]) => {
+      return result;
+    })
+    .catch(err => {
+      throw err;
+    });
+}
+
+async function cancelRent(args) {
+
+  const sql = `DELETE FROM RentalItem WHERE ItemID = '${args.itemID}'`;
+  const sql2 = `DELETE FROM RentalHeader WHERE RentalID = '${args.rentalID}'`;
+
+  console.log(args);
+
+  return db.promise().query(sql)
+    .then(([result]) => {
+
+      db.promise().query(sql2)
+        .then(([result]) => {
+          return result;
+      }).catch(err => {throw err});
+
+      return result;
+    })
+    .catch(err => {
+      throw err;
+    });
+}
+
+
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

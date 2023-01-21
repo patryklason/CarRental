@@ -1,0 +1,117 @@
+.rents-container {
+    padding: 40px 10px;
+}
+
+div.Collapsible {
+    display: block;
+    width: 70%;
+    min-width: 750px;
+    margin: 8px auto;
+    justify-content: center;
+}
+.Collapsible__trigger {
+    display: block;
+    font-weight: 400;
+    text-decoration: none;
+    position: relative;
+    border: none;
+    padding: 10px;
+    background: var(--mainColor);
+    color: white;
+
+    box-shadow: 4px 1px 5px black;
+    border-bottom: solid 2px black;
+    border-radius: 0 0 0 0;
+}
+
+.Collapsible:nth-of-type(1) .Collapsible__trigger{
+    border-radius: 10px 10px 0 0;
+}
+
+.Collapsible:last-of-type .Collapsible__trigger{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.Collapsible__trigger:hover {
+    cursor: pointer;
+}
+
+.collapsed {
+    background-color: var(--bg2Color);
+    border-radius: 10px 10px;
+    box-shadow: 7px 7px 10px black;
+    color: var(--mainColor);
+}
+
+.rent-info {
+    padding: 10px;
+}
+
+.rent-info ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+
+.rent-info ul li label {
+    font-size: 12px;
+    margin-bottom: 2px;
+    color: lightgray;
+}
+
+.rent-car-info {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.rent-car-info ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+
+.rent-car-info ul li label {
+    font-size: 12px;
+    margin-bottom: 2px;
+    color: lightgray;
+}
+
+.no-rents {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    color: var(--mainColor);
+}
+
+.no-rents div {
+    max-width: 50%;
+}
+
+.no-rents h1 {
+    font-size: 50px;
+}
+
+.no-rents p {
+    font-size: 20px;
+}
+
+.cancel-container button {
+    display: block;
+    margin: 20px auto;
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: transparent;
+    color: var(--mainColor);
+    border: solid 2px var(--mainColor);
+    border-radius: 20px;
+    transition: .3s;
+}
+
+.cancel-container button:hover {
+    cursor: pointer;
+    background-color: var(--mainColor);
+    color: var(--bg2Color);
+}

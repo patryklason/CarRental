@@ -2,12 +2,11 @@ nav {
     width: 100vw;
     padding-left: 5%;
     padding-right: 5%;
-    padding-bottom: 20px;
-    background-color: #2DA8D8FF;
+    padding-bottom: 5px;
     background-color: transparent;
     border-bottom: solid;
     border-width: 5px;
-    border-color: #D9514EFF;
+    border-color: var(--mainColor);
 }
 
 nav ul {
@@ -19,14 +18,14 @@ nav ul {
 nav ul li {
     display: block;
     font-size: 24px;
-    color: #D9514EFF;
+    color: var(--mainColor);
     letter-spacing: 2px;
     text-transform: uppercase;
     z-index: 999;
 }
 nav ul li .Link-style {
     padding-bottom: 5px;
-    color: #D9514EFF;
+    color: var(--mainColor);
     letter-spacing: 2px;
     text-decoration: none;
     transition: .3s;
@@ -40,7 +39,7 @@ nav ul li .Link-style:hover {
 }
 
 .Link-active {
-    border-bottom: solid 2px #D9514EFF;
+    border-bottom: solid 2px var(--mainColor);
 }
 
 
@@ -109,7 +108,7 @@ nav ul li:nth-of-type(4):hover .nav-dropdown {
     font-size: 18px;
     text-transform: none;
     transition: .3s;
-    color: #D9514EFF;
+    color: var(--mainColor);
 }
 
 .nav-btn-user:hover {

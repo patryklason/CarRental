@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import './Navbar.css'
+import './styles/Navbar.css'
 import NavButton from './NavButton'
 import Fleet from './Fleet'
 import Rents from './Rents'
