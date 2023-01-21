@@ -169,7 +169,6 @@ async function getClientInfo(clientID) {
 
   return db.promise().query(sql)
     .then(([result]) => {
-      console.log(result[0]);
       return {
         clientID: result[0].clientID,
         firstName: result[0].firstName,
@@ -229,7 +228,6 @@ async function createAccount(userData) {
           console.log(err);
         });
 
-      console.log(result);
       return result;
     })
     .catch(err => {
@@ -331,7 +329,6 @@ async function cancelRent(args) {
   const sql = `DELETE FROM RentalItem WHERE ItemID = '${args.itemID}'`;
   const sql2 = `DELETE FROM RentalHeader WHERE RentalID = '${args.rentalID}'`;
 
-  console.log(args);
 
   return db.promise().query(sql)
     .then(([result]) => {
