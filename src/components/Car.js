@@ -6,7 +6,7 @@ import { DateRange } from 'react-date-range';
 import './styles/Car.css'
 import { useHistory } from 'react-router-dom'
 import * as locales from 'react-date-range/dist/locale';
-import {add, addDays, addYears, differenceInDays, parseISO} from "date-fns";
+import { addDays, addYears, differenceInDays } from "date-fns";
 import Alert from "@mui/material/Alert";
 
 function Car() {
@@ -148,7 +148,7 @@ function Car() {
                 transition={{duration: 0.4}}
     >
 
-      <button onClick={handleReturnButton}><i className="fa-regular fa-circle-left"></i> Wróć</button>
+      <button onClick={handleReturnButton}><i className="fa-regular fa-circle-left"/> Wróć</button>
       <div className="car-content-container">
         <div className="left">
           <div className="image-container">

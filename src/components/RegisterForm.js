@@ -78,7 +78,8 @@ function RegisterForm() {
     setForm(nextState);
   };
 
-  const handlePhoneChange = (value, data, event, formattedValue) => {
+  //                        (value, data, event, formattedValue)
+  const handlePhoneChange = (value) => {
     const nextState = form;
     nextState.phone = '+' + value;
 
@@ -146,7 +147,7 @@ function RegisterForm() {
         <nav>
           <ul>
             <li>
-              <i className="fa-solid fa-car"></i>
+              <i className="fa-solid fa-car"/>
               Car Rental
             </li>
           </ul>
@@ -159,7 +160,7 @@ function RegisterForm() {
                     transition={{duration: 0.5, delay: 0.1}}>
           <h1>Zarejestruj się</h1>
           <div className="login-image-container">
-            <i className="fa-solid fa-user-tie"></i>
+            <i className="fa-solid fa-user-tie"/>
           </div>
           <form className="register-form" onSubmit={handleSubmit}>
             <label>Numer Dowodu Osobistego</label>

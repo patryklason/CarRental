@@ -1,10 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import './styles/Navbar.css'
-import NavButton from './NavButton'
-import Fleet from './Fleet'
-import Rents from './Rents'
-import { HashRouter, NavLink, Route, } from 'react-router-dom'
+
+import { NavLink } from 'react-router-dom'
 
 class Navbar extends React.Component {
 
@@ -25,7 +23,7 @@ class Navbar extends React.Component {
       >
         <ul>
           <li>
-            <i className="fa-solid fa-car"></i>
+            <i className="fa-solid fa-car"/>
             <span className="company-name">Car Rental</span>
           </li>
           <motion.li
@@ -50,7 +48,7 @@ class Navbar extends React.Component {
             exit={{opacity: 0}}
             transition={{duration: 0.3}}
           >
-            <i className="fa-solid fa-user"></i>
+            <i className="fa-solid fa-user"/>
             <div className="nav-dropdown">
               <NavLink to="/account" className="Link-style">
                 <button className="nav-btn-user nav-account">Konto</button>

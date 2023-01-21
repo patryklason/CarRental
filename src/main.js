@@ -18,7 +18,9 @@ function createWindow () {
   })
 
   //load the index.html from a url
-  win.loadURL('http://localhost:3000');
+  win.loadURL('http://localhost:3000').catch(err => {
+    throw err;
+  });
 
   // Open the DevTools.
   win.webContents.openDevTools()
@@ -119,9 +121,8 @@ ipcMain.handle('cancel-rent', (event, args) => {
  *
  *
  * @param args - expected object with 2 string elements: email and password
- * @returns {Promise<[(RowDataPacket[][] | RowDataPacket[] | OkPacket | OkPacket[] | ResultSetHeader), FieldPacket[]]>}
  *
- * returns promised object
+ * @returns promised object
  *  {
  *   email: undefined (if didn't find the user in DB)   |   string email from DB (if found in DB)
  *   password: undefined (if passwords doesn't match)   |   string 'correct' (if the user password is correct)
@@ -205,17 +206,7 @@ async function getFleet(args) {
 
 async function createAccount(userData) {
 
-  const sql = `START TRANSACTION; 
-  INSERT INTO  \`BD2-car_rental\`.\`Customer\` (\`ClientID\`, \`Password\`, \`FirstName\`, \`Surname\`, \`DriverLicenseNumber\`, \`DateOfJoining\`, \`Country\`, \`City\`, \`StreetAndHouseNumber\`, \`Email\`, \`Phone\`) VALUES (\`${userData.clientID}\`, \`${userData.password}\`, \`${userData.firstName}\`, \`${userData.surname}\`, \`${userData.driverLicenseNumber}\`, CURDATE(), \`${userData.country}\`, \`${userData.city}\`, \`${userData.streetAndHouseNumber}\`, \`${userData.email}\`, \`${userData.phone}\`); 
-  COMMIT;`;
-
-  const sql0 = `START transaction;`
-
   const sql1 = `INSERT INTO \`BD2-car_rental\`.\`Customer\` (\`ClientID\`, \`Password\`, \`FirstName\`, \`Surname\`, \`DriverLicenseNumber\`, \`DateOfJoining\`, \`Country\`, \`City\`, \`StreetAndHouseNumber\`, \`Email\`, \`Phone\`) VALUES ('${userData.clientID}', '${userData.password}', '${userData.firstName}', '${userData.surname}', '${userData.driverLicenseNumber}', CURDATE(), '${userData.country}', '${userData.city}', '${userData.streetAndHouseNumber}', '${userData.email}', '${userData.phone}');`
-
-  const sql2 = `COMMIT;`
-
-  const sql3 = sql0 + ` ` + sql1 + ` ` + sql2;
 
   return db.promise().query(sql1)
     .then(([result]) => {
@@ -256,8 +247,7 @@ async function checkAccountExists(args) {
     });
 }
 
-async function checkCarAvailability(args) {
-  const carID = args;
+async function checkCarAvailability(carID) {
 
   const sql = `SELECT rh.validFrom, rh.validTo FROM rentalheader as rh
 JOIN

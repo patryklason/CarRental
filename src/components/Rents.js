@@ -1,31 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import { motion } from 'framer-motion'
 import RentsItem from "./RentsItem";
-import FleetItem from "./FleetItem";
-import Alert from "@mui/material/Alert";
-import rentsItem from "./RentsItem";
 
 
 function Rents() {
 
-  let listItems = [];
+  let listItems;
   const [rentItems, setRentItems] = useState([]);
   const [showNoRents, setShowNoRents] = useState(false);
 
-  const rent = {
-    rentalID: 1,
-    validFrom: '20.10.2023',
-    validTo: '24.10.2023',
-    startedBy: 'Mike Wazowski',
-    endedBy: 'Wike Mazowski',
-    dailyRentPrice: 39.99,
-    brand: 'BMW',
-    model: 'M4 Comp',
-    fuelType: 'Benzyna',
-    transmission: 'Automatyczna',
-    engineSize: 3.0,
-    horsepower: '431',
-  }
 
   useEffect(() => {
     getRents().catch(err => {

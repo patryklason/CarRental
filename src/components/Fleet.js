@@ -7,7 +7,7 @@ function Fleet(){
 
   const [fleetItems, setFleetItems] = useState([]);
   //const [listItems, setListItems] = useState([]);
-  let listItems = [];
+  let listItems;
 
 
   useEffect(() => {

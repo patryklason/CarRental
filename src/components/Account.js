@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import './styles/Account.css'
 import { motion } from 'framer-motion'
-import loginForm from "./LoginForm";
 
-function Account(props) {
+
+function Account() {
 
   const [userData, setUserData] = useState({});
 

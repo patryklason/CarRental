@@ -3,28 +3,11 @@ import { motion } from 'framer-motion'
 import './styles/LoginForm.css'
 import { Link, useHistory} from 'react-router-dom'
 
-//const [isSubmitted, setIsSubmitted] = useState(false);
 
 
-
-
-const users = [
-  {
-    email: 'admin@admin.pl',
-    password: 'admin'
-  },
-  {
-    email: 'patryk@lason',
-    password: 'patryk'
-  }
-
-]
-
-function LoginForm(props) {
+function LoginForm() {
 
   let history = useHistory();
-
-  const [response, setResponse] = useState({});
 
   const [errorMessages, setErrorMessages] = useState({});
 
@@ -39,10 +22,6 @@ function LoginForm(props) {
     password: "",
   });
 
-  async function clicked(event) {
-    const result = await window.db.sayHello('hello from React!');
-    console.log(result);
-  }
 
   const handleEmailChange = (event) => {
     const nextFormState = {
@@ -99,7 +78,7 @@ function LoginForm(props) {
       <nav>
         <ul>
           <li>
-            <i className="fa-solid fa-car"></i>
+            <i className="fa-solid fa-car"/>
             Car Rental
           </li>
         </ul>
@@ -112,9 +91,9 @@ function LoginForm(props) {
       >
         <h1>Zaloguj się</h1>
         <div className="login-image-container">
-          <i className="fa-solid fa-user-tie"></i>
+          <i className="fa-solid fa-user-tie"/>
         </div>
-        <form className="login-form" onSubmit={(event) => {handleSubmit(event);}}>
+        <form className="login-form" onSubmit={(event) => {handleSubmit(event).catch(err => err);}}>
           <input type="email" name="login-user-login" placeholder="E-mail" value={form.email} onChange={handleEmailChange}/>
           <input type="password" name="login-user-password" placeholder="Hasło" value={form.password} onChange={handlePasswordChange}/>
           {renderErrorMessage("pass")}

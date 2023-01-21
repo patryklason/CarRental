@@ -1,6 +1,6 @@
 import './App.css';
 import Navbar from './components/Navbar'
-import { HashRouter, Link, Route, Switch } from 'react-router-dom'
+import { HashRouter, Route, Switch } from 'react-router-dom'
 import Fleet from "./components/Fleet";
 import Rents from "./components/Rents";
 import Account from "./components/Account";

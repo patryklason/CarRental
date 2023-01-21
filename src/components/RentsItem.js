@@ -1,21 +1,18 @@
 import React, {useState} from 'react'
 import Collapsible from 'react-collapsible';
 import './styles/Rents.css';
-import {differenceInDays, parseISO} from "date-fns";
-import {useHistory} from "react-router-dom";
 import Alert from "@mui/material/Alert";
 
 
 function RentsItem({rentalID, validFrom, validTo, dateDiff, startedBy, endedBy, dailyRentPrice, yearOfProduction, brand, model, fuelType, transmission, engineSize, horsepower, itemID}) {
 
-  let history = useHistory()
 
   let cancellable = false;
 
   const [disappear, setDisappear] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
-  let status = '';
+  let status;
 
   if(startedBy && endedBy)
     status = 'zakończone'
